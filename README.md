@@ -4,6 +4,12 @@ A [hardhat-circom](https://github.com/projectsophon/hardhat-circom) template to 
 
 ## Quick Start
 Compile the Multiplier2() circuit and verify it against a smart contract verifier
+## Logical gataes
+A B X Y Q
+0 0 0 1 1
+0 1 0 0 0
+1 0 0 1 1
+1 1 1 0 1
 
 ```
 pragma circom 2.0.0;
@@ -21,6 +27,8 @@ template Multiplier2 () {
    c <== a * b;  
 }
 component main = Multiplier2();
+
+
 ```
 ### Install
 `npm i`
@@ -103,7 +111,13 @@ npx hardhat newcircuit --name newcircuit
 **determinism**
 > When you recompile the same circuit using the groth16 protocol, even with no changes, this plugin will apply a new final beacon, changing all the zkey output files. This also causes your Verifier contracts to be updated.
 > For development builds of groth16 circuits, we provide the --deterministic flag in order to use a NON-RANDOM and UNSECURE hardcoded entropy (0x000000 by default) which will allow you to more easily inspect and catch changes in your circuits. You can adjust this default beacon by setting the beacon property on a circuit's config in your hardhat.config.js file.
+> 
+## transction
+To deploy the project on the Mumbai Testnet, run the following command:
 
+`npx hardhat run scripts/deploy.ts --network mumbai`
+
+Check for the successful transaction and verify fulfillment in the Mumbai PolygonScan by searching with the provided contract address
 
 ## Author 
 Himanshu Pal- chandigarh university
